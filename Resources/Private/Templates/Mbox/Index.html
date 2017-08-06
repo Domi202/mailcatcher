@@ -1,0 +1,9 @@
+<h1>Mbox Files</h1>
+
+<ul>
+	<f:for each="{files}" key="filename" as="filepath">
+		<li>
+			<f:link.action action="view" arguments="{path:filepath}">{filename}</f:link.action>
+		</li>
+	</f:for>
+</ul>

@@ -1,0 +1,47 @@
+{
+  "name": "domi202/mailcatcher",
+  "type": "typo3-cms-extension",
+  "require": {
+    "typo3/cms": "~8.7",
+    "php": "~7.0"
+  },
+  "require-dev": {
+    "typo3/testing-framework": "~1.1.0",
+    "phpunit/phpunit": "^6.2",
+    "mikey179/vfsStream": "^1.6@dev"
+  },
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Dominique Kreemers",
+      "email": "dominique.kreemers@me.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Domi202\\Mailcatcher\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Domi202\\Mailcatcher\\Tests\\": "Tests/"
+    }
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p .Build/Web/typo3conf/ext/",
+      "[ -L .Build/Web/typo3conf/ext/mailcatcher ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/mailcatcher"
+    ]
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "mailcatcher",
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
+    }
+  }
+}

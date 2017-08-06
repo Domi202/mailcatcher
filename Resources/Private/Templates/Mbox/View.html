@@ -1,0 +1,16 @@
+<h1>Mails</h1>
+
+<f:for each="{mails}" as="mail">
+	<dl style="border:1px solid black;">
+		<dt>Datum</dt>
+		<dd>{mail.date->f:format.date(format:'r')}</dd>
+		<dt>Betreff</dt>
+		<dd>{mail.subject}</dd>
+		<dt>Absender</dt>
+		<dd>{mail.from}</dd>
+		<dt>Empfänger</dt>
+		<dd>{mail.to}</dd>
+		<dt>Nachricht</dt>
+		<dd>{mail.message->f:format.stripTags(allowedTags:'<header>,<div>,<p>,<li>,<strong>')->f:format.raw()}</dd>
+	</dl>
+</f:for>
