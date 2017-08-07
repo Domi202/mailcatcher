@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+
+before_install:
+  - composer self-update
+  - composer --version
+
+before_script:
+  - composer install
+
+script:
+  - .Build/bin/phpcs ./Classes --standard=PSR2
+  - .Build/bin/phpunit --configuration phpunit.xml
