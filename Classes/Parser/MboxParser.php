@@ -112,7 +112,6 @@ class MboxParser
             if (trim($message) != '') {
                 $mail->message = quoted_printable_decode($message);
             }
-
         } while (!feof($this->file));
     }
 
