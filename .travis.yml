@@ -4,6 +4,9 @@ php:
   - 7.0
   - 7.1
 
+env:
+  - CODECLIMATE_REPO_TOKEN=a39bc9850c01a638a2733bfa5a0edcd236b435329808dff280f98311d6c449a5
+
 before_install:
   - composer self-update
   - composer --version
@@ -13,4 +16,12 @@ before_script:
 
 script:
   - .Build/bin/phpcs ./Classes --standard=PSR2
-  - .Build/bin/phpunit --configuration phpunit.xml
+  - .Build/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+  - .Build/bin/test-reporter < build/logs/clover.xml
+
+addon:
+  code_climate:
+    repo_token: a39bc9850c01a638a2733bfa5a0edcd236b435329808dff280f98311d6c449a5
+
+notifications:
+  email: false
